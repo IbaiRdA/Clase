@@ -1,9 +1,6 @@
 from bs4 import BeautifulSoup
 # Crear una variable soup como ejemplo
 # leyendo uno de los archivos HTML
-with open("mini_dataset/1.html", "r", encoding="utf-8") as f:
-    test = f.read()
-soup = BeautifulSoup(test, "html.parser")
 def has_title(soup):
     if soup.title and soup.title.text.strip():
         return 1
@@ -122,4 +119,5 @@ print("number_of_TR --> ", number_of_TR(soup))
 print("number_of_href --> ", number_of_href(soup))
 print("number_of_paragraph --> ", number_of_paragraph(soup))
 print("number_of_script --> ", number_of_script(soup))
+
 print("length_of_title --> ", length_of_title(soup))
