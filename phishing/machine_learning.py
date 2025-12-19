@@ -13,8 +13,10 @@ from sklearn.gaussian_process import GaussianProcessClassifier
 from sklearn.gaussian_process.kernels import RBF
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
-legitimate_df = pd.read_csv('structured_data_legitimate.csv')
-phishing_df = pd.read_csv('structured_data_phishing.csv')
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent
+legitimate_df = pd.read_csv(BASE_DIR /'structured_data_legitimate.csv')
+phishing_df = pd.read_csv(BASE_DIR /'structured_data_phishing.csv')
 df = pd.concat([legitimate_df, phishing_df], axis=0)
 df = df.sample(frac=1).reset_index(drop=True)
 df = df.drop('URL', axis=1)
@@ -189,4 +191,5 @@ data = {'accuracy': [NB_accuracy, SVM_accuracy, DT_accuracy, RF_accuracy, AB_acc
 index = ['NB', 'SVM', 'DT', 'RF', 'AB', 'NN', 'KN']
 df_results = pd.DataFrame(data=data, index=index)
 ax = df_results.plot.bar(rot=0)
+
 plt.show()
