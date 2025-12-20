@@ -67,13 +67,14 @@ with st.expander('EXAMPLE PHISHING URLs:'):
 st.write('_https://karafuru.invite-mint.com/_')
 st.write('_https://defi-ned.top/h5/#/_')
 st.caption('REMEMBER, PHISHING WEB PAGES HAVE SHORT LIFECYCLE! SO, THE EXAMPLES SHOULD BE UPDATED!')
-choice = st.selectbox("Please select your machine learning model",
-[
-'Gaussian Naive Bayes', 'Support Vector Machine', 'Decision Tree', 'Random Forest',
-'AdaBoost', 'Neural Network', 'K-Neighbours'
-]
+choice = st.selectbox(
+    "Please select your machine learning model",
+    [
+        'Gaussian Naive Bayes', 'Support Vector Machine', 'Decision Tree',
+        'Random Forest', 'AdaBoost', 'Neural Network', 'K-Neighbours'
+    ]
 )
-model = ml.nb_model
+
 if choice == 'Gaussian Naive Bayes':
     model = ml.nb_model
     st.write('GNB model is selected!')
@@ -95,7 +96,9 @@ elif choice == 'Neural Network':
 else:
     model = ml.kn_model
     st.write('KN model is selected!')
-    url = st.text_input('Enter the URL')
+
+# 👉 URL SIEMPRE definida
+url = st.text_input('Enter the URL')
 # check the url is valid or not
 if st.button('Check!'):
     try:
@@ -113,4 +116,5 @@ if st.button('Check!'):
             st.warning("Attention! This web page is a potential PHISHING!")
             st.snow()
     except re.exceptions.RequestException as e:
+
         print("--> ", e)
